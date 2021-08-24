@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import SingleContent from '../../components/SingleContent/SingleContent'
-
-import classes from './Trending.module.css'
 import CustomPagination from '../../components/Pagination/CustomPagination'
 import Genres from '../../components/Genres'
+
+import classes from './Trending.module.css'
 
 
 const Trending = () => {

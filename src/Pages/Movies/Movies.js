@@ -15,7 +15,7 @@ const Movies = () => {
   const genreforURL = useGenre(selectedGenres)
 
   const fetchMovies = async () => {
-    const { data } = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=658626a5647adb45825342efbbd9f971&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${page}&with_genres=${genreforURL}`)
+    const { data } = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=658626a5647adb45825342efbbd9f971&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreforURL}`)
 
     console.log(data)
     setContent(data.results)
