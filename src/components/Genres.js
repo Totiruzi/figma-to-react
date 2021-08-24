@@ -17,6 +17,7 @@ setPage}) => {
   const genreRemoveHandler = (genre) => {
     setSelectedGeneres(selectedGenres.filter((selected) => (selected.id !== genre.id)))
     setGenres([...genres, genre])
+    setPage(1)
   }
 
   const fetchGenres = async () => {
@@ -29,7 +30,7 @@ setPage}) => {
     fetchGenres()
 
     return () => {
-      setGenres({})
+      setGenres({}) // unmounting
     }
   // eslint-disable-next-line
   }, [])
