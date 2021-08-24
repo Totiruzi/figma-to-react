@@ -4,11 +4,14 @@ import SingleContent from '../../components/SingleContent/SingleContent'
 
 import classes from './Trending.module.css'
 import CustomPagination from '../../components/Pagination/CustomPagination'
+import Genres from '../../components/Genres'
 
 
 const Trending = () => {
   const [content, setContent] = useState([])
-  const [page, setPge] = useState(1)
+  const [page, setPage] = useState(1)
+  const [selectedGenres, setSelectedGeneres] = useState([])
+  const [genres, setGenres] = useState([])
 
   const fetchTrending = async () => {
     const { data } = await axios.get(
@@ -20,10 +23,19 @@ const Trending = () => {
 
   useEffect(() => {
     fetchTrending()
+    // eslint-disable-next-line
   }, [page])
   return (
     <div>
       <span className={classes.pageTitle}>Am Trending</span>
+      <Genres 
+        type='movie' 
+        setGenres={setGenres} 
+        setSelectedGeneres={setSelectedGeneres} 
+        genres={genres} 
+        selectedGenres= {selectedGenres}
+        setPage={setPage}
+      />
       <div className={classes.trending}>
         {content && content.map((c) => (
           <SingleContent 
@@ -38,7 +50,7 @@ const Trending = () => {
           />)
         )}
       </div>
-      <CustomPagination setPage={setPge} />
+      <CustomPagination setPage={setPage} />
     </div>
   )
 }
